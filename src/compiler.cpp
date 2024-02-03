@@ -35,6 +35,8 @@ std::string CompileRec(
 
     // For operators, may have to add some function for assigning registers instead of a4,a5 (idk)
     // AddOperator
+    }else if (program->expressionType()=="Float"){
+        return "{\"type\": \"decimal\", \"value\": " + std::to_string(program->getFloatValue()) + "}";
     }else if (program->expressionType()=="Variable"){
         return "{\"type\": \"var\", \"name\": " + program->getName() + "}";
     }

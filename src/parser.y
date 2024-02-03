@@ -19,9 +19,10 @@
   Expression* expr;
   int num;
   std::string* str;
+  float flt;
 }
 
-%token NUM NAME
+%token NUM NAME FLT
 %token LBRACKET RBRACKET PLUS MINUS MULT DIV MOD POW
 %token LT GT LTE GTE EQUALS 
 %right EQUALS
@@ -33,6 +34,7 @@
 %type <expr> ROOT FACTOR PREC2 PREC3 PREC4 PREC5 PREC6 UNARY
 %type <str> NAME
 %type <num> NUM
+%type <flt> FLT
 
 %start ROOT
 %%
@@ -66,8 +68,8 @@ UNARY : MINUS FACTOR                                                          {s
 FACTOR : LBRACKET PREC4 RBRACKET                                              {$$ = $2;}
        | NUM                                                                  {std::cout << "GOING UP: IntMade " << $1 << std::endl;$$ = new Int($1);}
        | NAME                                                                 {std::cout << "GOING UP: NAME " << *$1 << std::endl; $$ = new Variable(*$1); delete $1;}
-       | UNARY                                                                 {$$ = $1;}
-
+       | UNARY                                                                {$$ = $1;}
+       | FLT                                                                  {std::cout << "GOING UP: FloatMade " << $1 << std::endl; $$ = new Float($1);}
 %%
 
 const Expression* g_root; // Definition of variable (to match declaration earlier)

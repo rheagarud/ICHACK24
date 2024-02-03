@@ -42,3 +42,22 @@ public:
         return "Int";
     }
 };
+
+// float type wrapper
+class Float : public Expression{
+private:
+    float value;
+public:
+    Float()
+    : value(0.0){}
+    Float(float _value)
+    : value(_value){}
+    ~Float(){}
+
+    virtual float getFloatValue() const override{
+        return value;
+    }
+    virtual std::string expressionType() const override{
+        return "Float";
+    }
+};

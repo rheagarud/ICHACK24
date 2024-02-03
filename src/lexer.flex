@@ -8,6 +8,7 @@ extern "C" int fileno(FILE *stream);
 %}
 
 %%
+[0-9]+\.[0-9]+                      {fprintf (stdout, "Flt : %s\n", yytext); yylval.flt = strtof(yytext, NULL); return FLT;}
 [0-9]+                              {fprintf (stdout, "Num : %s\n", yytext); yylval.num = strtod(yytext, 0); return NUM;}
 [a-z](\_[0-9]+)?                    {fprintf (stdout, "Name : %s\n", yytext); yylval.str = new std::string(yytext); return NAME;} // can be variable or function name
 \(                                  {fprintf (stdout, "( : %s\n", yytext); return LBRACKET;}

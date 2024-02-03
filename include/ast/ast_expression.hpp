@@ -44,4 +44,7 @@ public:
     virtual int getIntValue() const{
         throw std::runtime_error("Not implemented.[6]");
     }
+    virtual float getFloatValue() const{
+        throw std::runtime_error("Not implemented.[7]");
+    }
 };
