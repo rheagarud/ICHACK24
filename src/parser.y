@@ -49,7 +49,7 @@ PREC6 : PREC6 LT PREC5                                                        {s
 
 PREC5 : PREC4                                                                 {$$ = $1;}
 
-PREC4 : PREC4 PLUS PREC3                                                    {$$ = new ArithCompOperator($1, $3, ADDITION);}
+PREC4 : PREC4 PLUS PREC3                                                    { $$ = new ArithCompOperator($1, $3, ADDITION);}
       | PREC4 MINUS PREC3                                                   {$$ = new ArithCompOperator($1, $3, SUBTRACTION);}
       | PREC3                                                                 {$$ = $1;}
 
@@ -62,7 +62,7 @@ PREC2 : PREC2 POW FACTOR                                                      {$
       | FACTOR                                                                {$$ = $1;}
 
 FACTOR : LBRACKET PREC4 RBRACKET                                              {$$ = $2;}
-       | NUM                                                                  {$$ = new Int($1);}
+       | NUM                                                                  {std::cout << "IntMade " << $1 << std::endl;$$ = new Int($1);}
        | NAME                                                                 {std::cout << "NAME " << *$1 << std::endl; $$ = new Variable(*$1); delete $1;}
 
 
