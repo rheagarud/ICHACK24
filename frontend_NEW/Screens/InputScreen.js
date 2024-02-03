@@ -20,7 +20,7 @@ const InputScreen = () => {
 
   const handleButtonPress = () => {
     if (isInputValid(inputText)) {
-      navigation.navigate('DisplayScreen')
+      navigation.navigate('DisplayScreen', { inputText });
     } else {
       setErrorText('Invalid input. Please enter a valid expression.')
     }
@@ -48,36 +48,5 @@ const InputScreen = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 16,
-  },
-  header: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 16,
-  },
-  textBox: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    paddingLeft: 8,
-    marginBottom: 16,
-    width: '100%',
-    borderRadius: 8,
-  },
-  roundedButton: {
-    backgroundColor: 'black',
-    borderRadius: 8,
-  },
-  errorText: {
-    color: 'red',
-    marginBottom: 16,
-  },
-});
 
 export default InputScreen;

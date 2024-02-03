@@ -16,17 +16,19 @@ export const styles = StyleSheet.create({
         height: 40,
         borderColor: 'gray',
         borderWidth: 1,
-        paddingLeft: 8,
+        paddingLeft: 15,
         marginBottom: 16,
         width: '100%',
         borderRadius: 8,
-        letterSpacing: 4,
         justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
+        textAlign: 'left',
     },
     roundedButton: {
         backgroundColor: 'black',
         borderRadius: 100,
+    },
+    errorText: {
+        color: 'red',
+        marginBottom: 16,
     },
 });
