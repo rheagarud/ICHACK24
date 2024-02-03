@@ -160,6 +160,13 @@ int main(int argc, char **argv)
     // Compile
     const std::string res = CompileRec(ast);
 
+    std::cout << outputPath << " " << sourcePath << std::endl;
+
+    std::ofstream output;
+    output.open(outputPath, std::ios::trunc);
+
+    output << res;
+
     std::cout << res << std::endl;
 
     return 0;
