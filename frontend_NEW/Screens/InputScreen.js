@@ -1,6 +1,6 @@
 // InputScreen.js
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from '../styles';
 
@@ -40,10 +40,12 @@ const InputScreen = () => {
 
       <Text style={styles.errorText}>{errorText}</Text>
 
-      <Button title="Parse"
+      <TouchableOpacity
+        style={styles.roundedButton}
         onPress={handleButtonPress}
-        style = {styles.roundedButton}
-      />
+      >
+        <Text style={styles.buttonText}>Parse</Text>
+      </TouchableOpacity>
       
     </View>
   );

@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     header: {
         fontSize: 24,
         fontWeight: 'bold',
-        marginBottom: 16,
+        marginBottom: 106,
     },
     textBox: {
         height: 40,
@@ -24,8 +24,15 @@ export const styles = StyleSheet.create({
         textAlign: 'left',
     },
     roundedButton: {
-        backgroundColor: 'black',
-        borderRadius: 100,
+        backgroundColor: 'darkgreen',
+        borderRadius: 30,
+        paddingVertical: 3,
+        paddingHorizontal: 22,
+    },
+    buttonText: {
+        color: 'white',
+        fontSize: 16,
+        padding: 10
     },
     errorText: {
         color: 'red',
