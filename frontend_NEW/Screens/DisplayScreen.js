@@ -8,7 +8,7 @@ import { Icon } from 'react-native-elements';
 
 const DisplayScreen = ({ route }) => {
   const navigation = useNavigation();
-  const expression = route.params.inputText;
+  const expression = route.params.inputText;  
 
   // TODO: Uncomment when server online
   // const [data, setData] = useState(null);
@@ -21,7 +21,7 @@ const DisplayScreen = ({ route }) => {
   // }, []);
 
   // TODO: remove when server online
-  const data = {"type": "sub", "left": {"type": "add", "left": {"type": "int", "value": 3}, "right": {"type": "int", "value": 5}}, "right": {"type": "int", "value": 4}}
+  const data = '{"type": "sub", "left": {"type": "add", "left": {"type": "int", "value": 3}, "right": {"type": "int", "value": 5}}, "right": {"type": "int", "value": 4}}'
   
   return (
     <View style={styles.container}>
@@ -34,9 +34,9 @@ const DisplayScreen = ({ route }) => {
         onPress={() => navigation.goBack()}
         containerStyle={styles.backButton}
       />
-
-      <DisplayTree tree={data}/>
       
+      <DisplayTree expression={data} />
+
     </View>
   );
 };
