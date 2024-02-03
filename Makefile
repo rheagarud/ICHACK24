@@ -1,4 +1,4 @@
-CPPFLAGS += -std=c++20 -W -Wall -g -I include
+CPPFLAGS += -std=c++17 -W -Wall -g -I include
 
 .PHONY: default
 

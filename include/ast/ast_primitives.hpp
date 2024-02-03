@@ -21,3 +21,22 @@ public:
         return "Variable";
     }
 };
+
+
+// int type wrapper
+class Int : public Expression{
+private:
+    int value;
+public:
+    Int()
+    : value(0){}
+    Int(int _value)
+    : value(_value){}
+
+    virtual int getIntValue() const override{
+        return value;
+    }
+    virtual std::string expressionType() const override{
+        return "Int";
+    }
+};

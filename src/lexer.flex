@@ -9,7 +9,7 @@ extern "C" int fileno(FILE *stream);
 
 %%
 [0-9]+                              {fprintf (stderr, "Num : %s\n", yytext); yylval.num = strtod(yytext, 0); return NUM;}
-[a-z](\_[0-9]+)?                    {fprintf (stderr, "Name : %s\n", yytext); yylval.str = new std::string(yytext); return T_NAME;} // can be variable or function name
+[a-z](\_[0-9]+)?                    {fprintf (stderr, "Name : %s\n", yytext); yylval.str = new std::string(yytext); return NAME;} // can be variable or function name
 \(                                  {fprintf (stderr, "( : %s\n", yytext); return LBRACKET;}
 \)                                  {fprintf (stderr, ") : %s\n", yytext); return RBRACKET;}
 \*\*                                {fprintf (stderr, "** : %s\n", yytext); return POW;}
