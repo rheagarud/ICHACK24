@@ -14,8 +14,8 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
 
-          <Stack.Screen name="DisplayScreen" component={DisplayScreen} options={{headerShown: false}}/>
           <Stack.Screen name="InputScreen" component={InputScreen} options={{headerShown: false}}/>
+          <Stack.Screen name="DisplayScreen" component={DisplayScreen} options={{headerShown: false}}/>
 
         </Stack.Navigator>
       </NavigationContainer>

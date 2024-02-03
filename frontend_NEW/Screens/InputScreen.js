@@ -1,15 +1,19 @@
 // InputScreen.js
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import DisplayScreen from './DisplayScreen';
 
 const InputScreen = () => {
   const [inputText, setInputText] = useState('');
+  const navigation = useNavigation();
 
   const handleInputChange = (text) => {
     setInputText(text);
   };
 
   const handleButtonPress = () => {
+
   };
 
   return (
@@ -21,7 +25,10 @@ const InputScreen = () => {
         onChangeText={handleInputChange}
         value={inputText}
       />
-      <Button title="Submit" onPress={handleButtonPress} />
+      <Button title="Submit"
+      onPress={() => navigation.navigate('DisplayScreen')}
+      style = {styles.roundedButton}
+      />
     </View>
   );
 };
@@ -45,6 +52,11 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
     marginBottom: 16,
     width: '100%',
+    borderRadius: 8, // Adjust the value as needed for the desired roundness
+  },
+  roundedButton: {
+    backgroundColor: 'black',
+    borderRadius: 8,
   },
 });
 
