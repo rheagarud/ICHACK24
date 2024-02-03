@@ -12,6 +12,10 @@ __pycache__/
 *.yy.cpp
 *.tab.cpp
 *.tab.hpp
+
+# Object binaries
+bin/
+
 # Distribution / packaging
 .Python
 build/

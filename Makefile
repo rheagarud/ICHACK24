@@ -2,7 +2,7 @@ CPPFLAGS += -std=c++17 -W -Wall -g -I include
 
 .PHONY: default
 
-default: bin/c_compiler
+default: bin/ast_maker
 
 src/parser.tab.cpp src/parser.tab.hpp : src/parser.y
 	bison -v -d src/parser.y -o src/parser.tab.cpp
@@ -10,9 +10,9 @@ src/parser.tab.cpp src/parser.tab.hpp : src/parser.y
 src/lexer.yy.cpp : src/lexer.flex src/parser.tab.hpp
 	flex -o src/lexer.yy.cpp src/lexer.flex
 
-bin/c_compiler : src/cli.cpp src/compiler.cpp src/parser.tab.o src/lexer.yy.o src/parser.tab.o
+bin/ast_maker : src/cli.cpp src/compiler.cpp src/parser.tab.o src/lexer.yy.o src/parser.tab.o
 	@mkdir -p bin
-	g++ $(CPPFLAGS) -o bin/c_compiler $^
+	g++ $(CPPFLAGS) -o bin/ast_maker $^
 
 clean :
 	rm -rf bin/*
