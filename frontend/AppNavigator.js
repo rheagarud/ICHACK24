@@ -1,17 +1,26 @@
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import InputScreen from './Screens/InputScreen';
 import DisplayScreen from './Screens/DisplayScreen';
 
-const AppNavigator = createStackNavigator(
-  {
-    Input: InputScreen,
-    Display: DisplayScreen,
-  },
-  {
-    initialRouteName: 'Input',
-  }
-);
+const Stack = createStackNavigator();
+function AppNavigator() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Input" component={InputScreen} />
+      <Stack.Screen name="Display" component={DisplayScreen} />
+    </Stack.Navigator>
+  );
+}
 
-export default createAppContainer(AppNavigator);
+// const AppNavigator = createStackNavigator(
+//   {
+//     Input: InputScreen,
+//     Display: DisplayScreen,
+//   },
+//   {
+//     initialRouteName: 'Input',
+//   }
+// );
+
+export default AppNavigator;
