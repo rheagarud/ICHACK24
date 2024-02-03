@@ -20,9 +20,13 @@ export const styles = StyleSheet.create({
         marginBottom: 16,
         width: '100%',
         borderRadius: 8,
+        letterSpacing: 4,
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
     },
     roundedButton: {
         backgroundColor: 'black',
-        borderRadius: 8,
+        borderRadius: 100,
     },
 });
