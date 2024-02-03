@@ -1,15 +1,18 @@
 // InputScreen.js
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const InputScreen = () => {
   const [inputText, setInputText] = useState('');
+  const navigation = useNavigation();
 
   const handleInputChange = (text) => {
     setInputText(text);
   };
 
   const handleButtonPress = () => {
+
   };
 
   return (
