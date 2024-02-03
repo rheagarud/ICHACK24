@@ -3,10 +3,18 @@ import { View, Text, Button } from 'react-native';
 import { styles } from '../styles';
 import { useNavigation } from '@react-navigation/native';
 import { DisplayTree } from '../components/displayTree';
+import { Icon } from 'react-native-elements';
+
 
 const DisplayScreen = ({ route }) => {
   const navigation = useNavigation();
   const expression = route.params.inputText;
+
+  navigation.setOptions({
+    headerLeft: () => (
+      <Button title="Back" onPress={() => navigation.goBack()} />
+    ),
+  });
 
   // TODO: Uncomment when server online
   // const [data, setData] = useState(null);
@@ -24,12 +32,16 @@ const DisplayScreen = ({ route }) => {
   return (
     <View style={styles.container}>
 
-      <DisplayTree tree={data}/>
-
-      <Button
-        title="Do again."
-        onPress={() => navigation.navigate('InputScreen')}
+      <Icon
+        name='arrow-back'
+        type='material'
+        size={24}
+        color='black'
+        onPress={() => navigation.goBack()}
+        containerStyle={styles.backButton}
       />
+
+      <DisplayTree tree={data}/>
       
     </View>
   );

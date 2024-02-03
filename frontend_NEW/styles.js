@@ -34,6 +34,11 @@ export const styles = StyleSheet.create({
         fontSize: 16,
         padding: 10
     },
+    backButton: {
+        position: 'absolute',
+        top: 40,
+        left: 10,
+    },
     errorText: {
         color: 'red',
         marginBottom: 16,
