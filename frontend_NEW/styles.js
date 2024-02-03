@@ -27,6 +27,11 @@ export const styles = StyleSheet.create({
         backgroundColor: 'black',
         borderRadius: 100,
     },
+    backButton: {
+        position: 'absolute',
+        top: 40,
+        left: 10,
+    },
     errorText: {
         color: 'red',
         marginBottom: 16,
