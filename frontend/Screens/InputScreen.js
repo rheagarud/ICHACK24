@@ -21,7 +21,9 @@ const InputScreen = () => {
         onChangeText={handleInputChange}
         value={inputText}
       />
-      <Button title="Submit" onPress={handleButtonPress} />
+      <Button title="Submit"
+      onPress={() => navigation.navigate('Display')}
+    />
     </View>
   );
 };
