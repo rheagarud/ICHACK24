@@ -7,7 +7,7 @@
 #include <stack>
 
 #include "cli.h"
-#include "ast.hpp"
+#include "../include/ast.hpp"
 
 
 /*
@@ -150,7 +150,7 @@ int main(int argc, char **argv)
     }
 
     // Parse the AST
-    const ExpressionPtr ast=parseAST();
+    const ExpressionPtr ast = parseAST();
     // Compile
     const std::string res = CompileRec(ast);
 
