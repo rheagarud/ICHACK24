@@ -15,7 +15,9 @@ enum Operators{
     MORE,
     LESSOREQUAL,
     MOREOREQUAL,
-    POWER
+    POWER,
+    NEGATE,
+    EQUAL
 };
 
 class ArithCompOperator : public Expression {
@@ -74,10 +76,43 @@ public:
                 return "MoreThanEqualOperator";
                 break;
             case POWER:
-                return "Power";
+                return "PowerOperator";
+                break;
+            case EQUAL:
+                return "EqualsOperator";
                 break;
             default:
                 throw std::runtime_error("Invalid Arithmetic, Logic or Comparison operator");
+        }
+    }
+};
+
+class Unary : public Expression {
+private:
+    ExpressionPtr val;
+    int optype;
+public:
+    Unary(){
+        throw std::runtime_error("Class not initialised");
+    }
+    Unary(ExpressionPtr _val)
+    : val(_val), optype(NEGATE) {} //defaults to -a
+    Unary(ExpressionPtr _val, int _optype)
+    : val(_val), optype(_optype) {}
+
+    virtual ~Unary(){
+        delete val;
+    }
+    virtual ExpressionPtr getValue() const override{
+        return val;
+    }
+    virtual std::string expressionType() const override{
+        switch(optype){
+            case (NEGATE):
+                return "NegateOperator";
+                break;
+            default:
+                throw std::runtime_error("Invalid Unary operator");
         }
     }
 };

@@ -20,7 +20,7 @@ RECURSIVE COMPILE
 std::string CompileRec(
     ExpressionPtr program
 ){
-    std::cout << program->expressionType() << std::endl;
+    std::cout << "GOING THROUGH: " << program->expressionType() << std::endl;
 
     /////////////////////////////
     // FROM ast_primitives.hpp //
@@ -35,8 +35,15 @@ std::string CompileRec(
 
     // For operators, may have to add some function for assigning registers instead of a4,a5 (idk)
     // AddOperator
-    }else if (program->expressionType()=="AddOperator"){
-        return "{\"type\": \"add\", \"left\": " + CompileRec(program->getLeft()) + ", \"right\": " + CompileRec(program->getRight()) + "}";
+    }else if (program->expressionType()=="Variable"){
+        return "{\"type\": \"var\", \"name\": " + program->getName() + "}";
+    }
+    else if (program->expressionType()=="AddOperator"){
+        std::cout << "GOING LEFT" << std::endl;
+        std::string left = CompileRec(program->getLeft());
+        std::cout << "GOING RIGHT" << std::endl;
+        std::string right = CompileRec(program->getRight());
+        return "{\"type\": \"add\", \"left\": " + left + ", \"right\": " + right + "}";
 
     // SubOperator
     }else if (program->expressionType()=="SubOperator"){
@@ -53,12 +60,11 @@ std::string CompileRec(
     // ModuloOperator
     }else if (program->expressionType()=="ModuloOperator"){
         return "{\"type\": \"mod\", \"left\": " + CompileRec(program->getLeft()) + ", \"right\": " + CompileRec(program->getRight()) + "}";
-
-
-
-
     // LSOperator
-    }else if (program->expressionType()=="LSOperator"){
+    }else if (program->expressionType()=="PowerOperator"){
+        return "{\"type\": \"power\", \"left\": " + CompileRec(program->getLeft()) + ", \"right\": " + CompileRec(program->getRight()) + "}";
+    }
+    else if (program->expressionType()=="LSOperator"){
         // TODO later
 
     // RSOperator
@@ -75,7 +81,7 @@ std::string CompileRec(
 
     // EqualsOperator
     }else if (program->expressionType()=="EqualsOperator"){
-        // TODO later
+        return "{\"type\": \"equals\", \"left\": " + CompileRec(program->getLeft()) + ", \"right\": " + CompileRec(program->getRight()) + "}";
 
     // NotEqualsOperator
     }else if (program->expressionType()=="NotEqualsOperator"){
@@ -83,19 +89,19 @@ std::string CompileRec(
 
     // LessThanOperator
     }else if (program->expressionType()=="LessThanOperator"){
-        // TODO later
+        return "{\"type\": \"<\", \"left\": " + CompileRec(program->getLeft()) + ", \"right\": " + CompileRec(program->getRight()) + "}";
 
     // MoreThanOperator
     }else if (program->expressionType()=="MoreThanOperator"){
-        // TODO later
+        return "{\"type\": \">\", \"left\": " + CompileRec(program->getLeft()) + ", \"right\": " + CompileRec(program->getRight()) + "}";
 
     // LessThanEqualOperator
     }else if (program->expressionType()=="LessThanEqualOperator"){
-        // TODO later
+        return "{\"type\": \"<=\", \"left\": " + CompileRec(program->getLeft()) + ", \"right\": " + CompileRec(program->getRight()) + "}";
 
     // MoreThanEqualOperator
     }else if (program->expressionType()=="MoreThanEqualOperator"){
-        // TODO later
+        return "{\"type\": \">=\", \"left\": " + CompileRec(program->getLeft()) + ", \"right\": " + CompileRec(program->getRight()) + "}";
 
     // NotOperator - checks equal to 0
     }else if (program->expressionType()=="NotOperator"){
@@ -103,8 +109,8 @@ std::string CompileRec(
 
     // NegateOperator - changes sign
     }else if (program->expressionType()=="NegateOperator"){
-        // TODO later
-
+        std::string next = CompileRec(program->getValue());
+        return "{\"type\": \"negate\", \"value\": " + next + "}";
 
     }else{
         throw std::runtime_error("Unknown construct '"+program->expressionType()+"'");
@@ -153,6 +159,8 @@ int main(int argc, char **argv)
     const ExpressionPtr ast = parseAST();
     // Compile
     const std::string res = CompileRec(ast);
+
+    std::cout << res << std::endl;
 
     return 0;
 }

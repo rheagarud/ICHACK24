@@ -12,6 +12,7 @@ public:
     Variable() {throw std::runtime_error("Variable name not given");}
     Variable (const std::string& _name)
     : name(_name) {}
+    ~Variable(){}
 
     virtual std::string getName() const override{
         return name;
@@ -32,6 +33,7 @@ public:
     : value(0){}
     Int(int _value)
     : value(_value){}
+    ~Int(){}
 
     virtual int getIntValue() const override{
         return value;
