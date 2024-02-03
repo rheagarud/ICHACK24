@@ -10,12 +10,6 @@ const DisplayScreen = ({ route }) => {
   const navigation = useNavigation();
   const expression = route.params.inputText;
 
-  navigation.setOptions({
-    headerLeft: () => (
-      <Button title="Back" onPress={() => navigation.goBack()} />
-    ),
-  });
-
   // TODO: Uncomment when server online
   // const [data, setData] = useState(null);
   
