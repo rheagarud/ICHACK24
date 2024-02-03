@@ -28,11 +28,11 @@ app.post('/run-command', (req, res) => {
     console.log(stderr);
     if (error) {
       console.error(`Error executing command: ${error.message}`);
-      return res.status(500).send({"error":'Internal Server Error'});
+      return res.status(500).send({"result":"none","error":'Internal Server Error'});
     }
     if (stderr) {
       console.log("stderr")
-      return res.status(200).send({"error":stderr});
+      return res.status(200).send({"result":"none","error":stderr});
     }
     console.log("ok")
     return res.status(200).send({"result":stdout, "error":"none"});
