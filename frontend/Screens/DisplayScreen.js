@@ -11,17 +11,26 @@ const DisplayScreen = ({ route }) => {
   const expression = route.params.inputText;  
 
   // TODO: Uncomment when server online
-  // const [data, setData] = useState(null);
+  const [data, setData] = useState(null);
   
-  // useEffect(() => {
-  //   fetch('https://your-backend-url.com/endpoint')
-  //     .then(response => response.json())
-  //     .then(fetchedData => setData(fetchedData))
-  //     .catch(error => console.error('Error:', error));
-  // }, []);
+  useEffect(() => {
+    fetch('https://localhost:3000/run-command',{
+      method: "POST",
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        hello: expression,
+    }),
+  })
+      .then(response => response.json())
+      .then(fetchedData => setData(fetchedData))
+      .catch(error => console.error('Error:', error));
+  }, []);
 
   // TODO: remove when server online
-  const data = '{"type": "sub", "left": {"type": "add", "left": {"type": "int", "value": 3}, "right": {"type": "int", "value": 5}}, "right": {"type": "int", "value": 4}}'
+  // const data = '{"type": "sub", "left": {"type": "add", "left": {"type": "int", "value": 3}, "right": {"type": "int", "value": 5}}, "right": {"type": "int", "value": 4}}'
   
   return (
     <View style={styles.container}>

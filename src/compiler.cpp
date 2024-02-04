@@ -41,9 +41,7 @@ std::string CompileRec(
         return "{\"type\": \"var\", \"name\": " + program->getName() + "}";
     }
     else if (program->expressionType()=="AddOperator"){
-        std::cout << "GOING LEFT" << std::endl;
         std::string left = CompileRec(program->getLeft());
-        std::cout << "GOING RIGHT" << std::endl;
         std::string right = CompileRec(program->getRight());
         return "{\"type\": \"add\", \"left\": " + left + ", \"right\": " + right + "}";
 
