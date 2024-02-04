@@ -40,6 +40,8 @@ const DisplayScreen = ({ route }) => {
         onPress={() => navigation.goBack()}
         containerStyle={styles.backButton}
       />
+
+      <Text style={styles.header}>{expression}</Text>
       
       <DisplayTree expression={data} />
 

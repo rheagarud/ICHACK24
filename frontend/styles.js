@@ -6,11 +6,12 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 16,
+        backgroundColor: 'white',
     },
     header: {
         fontSize: 24,
         fontWeight: 'bold',
-        marginBottom: 106,
+        marginBottom: 40,
     },
     textBox: {
         height: 40,
