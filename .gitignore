@@ -36,6 +36,12 @@ share/python-wheels/
 *.egg
 MANIFEST
 
+# node stuff
+package-lock.json
+package.json
+devices.json
+metro/
+.vscode/
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
