@@ -1,36 +1,45 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { styles } from '../styles';
+import TreeComponent from './nodeDisplay';
+
 
 const typeToSymbol = (input) => {
     let map = new Map([["add", "+"], ["sub", "-"], ["mult", "x"], ["div", "÷"]]);
     return map.get(input);
 };
 
-// input tree type: dictionary
-export const draw = (item)=>{
-    console.log("Item:", item);
-    if (item.type != "int" && item.type != "var"){
-        console.log("type:", item.type);
-        return (
-            <View>
-                <Text>{typeToSymbol(item.type)}</Text>
-                <View style={{flexDirection: "row"}}>
-                    <Text>{item.left && draw(item.left)}</Text>
-                    <Text>{item.right && draw(item.right)}</Text>
-                </View>
-            </View>
-        );
-    }
-    else{
-        console.log("Value:", item.value);
-        return (
-            <View>
-                <Text>{item.value}</Text>
-            </View>
-        );
-    }
+export const draw = (item)=> {
+   return (
+     <TreeComponent node={item} />
+   );
+
 }
+
+// input tree type: dictionary
+// export const draw = (item)=>{
+//     console.log("Item:", item);
+//     if (item.type != "int" && item.type != "var"){
+//         console.log("type:", item.type);
+//         return (
+//             <View>
+//                 <Text>{typeToSymbol(item.type)}</Text>
+//                 <View style={{flexDirection: "row"}}>
+//                     <Text>{item.left && draw(item.left)}</Text>
+//                     <Text>{item.right && draw(item.right)}</Text>
+//                 </View>
+//             </View>
+//         );
+//     }
+//     else{
+//         console.log("Value:", item.value);
+//         return (
+//             <View>
+//                 <Text>{item.value}</Text>
+//             </View>
+//         );
+//     }
+// }
 
 export const DisplayTree = ({ expression }) => {
     console.log("Expression:", expression)
@@ -41,21 +50,24 @@ export const DisplayTree = ({ expression }) => {
             </View>
         );
     }
-    
-    else if (expression["error"] != "none") {
+    else if (false && expression["error"] != "none") {
+        console.log("error from expressions: " + expression["error"]);
         return (
             <View>
-                <Text style={styles.errorText}>expression["error"]</Text>
+                <Text style={styles.errorText}>{expression["error"]}</Text>
             </View>
         );
     }
-
-    json = JSON.parse(expression["result"]);
+    // console.log("error from expression: " + expression["error"]);
+    // json = JSON.parse(expression["result"]);
     //makeTree('{"type": "sub", "left": {"type": "add", "left": {"type": "int", "value": 3}, "right": {"type": "int", "value": 5}}, "right": {"type": "int","value":4}}');
     return (
         <View>
             {/* <Text>Error: {expression["result"]}</Text> */}
-            {draw(json)}
+            {
+            // draw(json)
+            draw (JSON.parse('{"type": "sub", "left": {"type": "add", "left": {"type": "int", "value": 3}, "right": {"type": "int", "value": 5}}, "right": {"type": "int","value":4}}'))
+            }
         </View>
     );
 };
