@@ -16,7 +16,7 @@ mkdir -p bin/output
 echo "$1" >> ./ast_tests/woohoo.txt
 touch ./bin/output/woohoo.json
 chmod a+x ./bin/output/woohoo.json
-bin/ast_maker -S "./ast_tests/woohoo.txt" -o "./bin/output/woohoo.json" >> /dev/null
+bin/ast_maker -S "./ast_tests/woohoo.txt" -o "./bin/output/woohoo.json" 2>> /dev/null >> /dev/null
 value=`cat "./bin/output/woohoo.json"`; 
 echo $value; 
 rm -f ./ast_tests/woohoo.txt; 

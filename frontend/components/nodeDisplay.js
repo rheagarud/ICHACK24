@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import Svg, { Circle, Line, G, Text as SvgText } from 'react-native-svg';
 
 const typeToSymbol = (input) => {
-  let map = new Map([["add", "+"], ["sub", "-"], ["mult", "x"], ["div", "÷"], ["power", "^"]]);
+  let map = new Map([["add", "+"], ["sub", "-"], ["mult", "x"], ["div", "÷"], ["power", "^"], ["equals","=",],["<","<"],[">",">"],["<=","<="],[">=",">="]]);
   return map.get(input);
 };
 
