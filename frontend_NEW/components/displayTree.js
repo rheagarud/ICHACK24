@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { styles } from '../styles';
 
 const typeToSymbol = (input) => {
     let map = new Map([["add", "+"], ["sub", "-"], ["mult", "x"], ["div", "÷"]]);
@@ -11,7 +12,9 @@ export const draw = (item)=>{
     if (item.type != "int" && item.type != "var"){
         return (
             <View>
-                <Text>{typeToSymbol(item.type)}</Text>
+                <View style = {styles.node}>
+                    <Text style = {styles.val}>{typeToSymbol(item.type)}</Text>
+                </View>
                 {item.left && draw(item.left)}
                 {item.right && draw(item.right)}
             </View>
@@ -19,8 +22,8 @@ export const draw = (item)=>{
     }
     else{
         return (
-            <View>
-                <Text>{item.value}</Text>
+            <View style = {styles.node}>
+                <Text style = {styles.val}>{item.value}</Text>
             </View>
         );
     }

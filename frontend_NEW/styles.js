@@ -43,4 +43,17 @@ export const styles = StyleSheet.create({
         color: 'red',
         marginBottom: 16,
     },
+    node: {
+        justifyContent: "center",
+        alignItems: "center",
+        width: 50, 
+        height: 50, 
+        borderRadius: 25, 
+        borderWidth: 1, 
+        borderColor: 'black'
+    },
+    val: {
+        fontSize: 24,
+        textAlign: 'center',
+    },
 });
