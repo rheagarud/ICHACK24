@@ -26,12 +26,21 @@ export const draw = (item)=>{
     }
 }
 export const DisplayTree = ({ expression }) => {
-    const json_obj = JSON.parse(expression);
-    console.log(json_obj.type);
+    console.log("Expression:", expression)
+    if (expression == null) {
+        return (
+            <View>
+                <Text>Invalid input</Text>
+            </View>
+        );
+    }
+    // const json_obj = JSON.parse(expression);
+    // console.log("Draw input type:", json_obj.type);
     //makeTree('{"type": "sub", "left": {"type": "add", "left": {"type": "int", "value": 3}, "right": {"type": "int", "value": 5}}, "right": {"type": "int","value":4}}');
     return (
         <View>
-            {draw(json_obj)}
+            <Text>Error: {expression["result"]}</Text>
+            {/* {draw(json_obj)} */}
         </View>
     );
 };

@@ -18,7 +18,7 @@ app.post('/run-command', (req, res) => {
   }
 
   // Construct the shell command with the provided parameter
-  const command = `cd ~/ICHACK24; ./test.sh "${hello}"`;
+  const command = `cd /Users/advik/Documents/imperial/scratch/ICHACK24; ./test.sh "${hello}"`;
   // const command = ``
 
   // Execute the shell command

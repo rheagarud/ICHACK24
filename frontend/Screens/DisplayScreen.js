@@ -9,12 +9,11 @@ import { Icon } from 'react-native-elements';
 const DisplayScreen = ({ route }) => {
   const navigation = useNavigation();
   const expression = route.params.inputText;  
-
-  // TODO: Uncomment when server online
-  const [data, setData] = useState(null);
+  const [data, setData] = useState("");
   
   useEffect(() => {
-    fetch('https://localhost:3000/run-command',{
+    console.log("SENDING:",expression);
+    fetch('http://localhost:3000/run-command',{
       method: "POST",
       headers: {
         Accept: 'application/json',
@@ -24,14 +23,12 @@ const DisplayScreen = ({ route }) => {
         hello: expression,
     }),
   })
-      .then(response => response.json())
-      .then(fetchedData => setData(fetchedData))
+      .then(response => {return response.json();})
+      .then(fetchedData => {setData(fetchedData);})
+      .then(console.log(data))
       .catch(error => console.error('Error:', error));
   }, []);
 
-  // TODO: remove when server online
-  // const data = '{"type": "sub", "left": {"type": "add", "left": {"type": "int", "value": 3}, "right": {"type": "int", "value": 5}}, "right": {"type": "int", "value": 4}}'
-  
   return (
     <View style={styles.container}>
 
